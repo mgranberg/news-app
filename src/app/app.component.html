@@ -1,28 +1,25 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">NYHETER</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Samlade Nyheter</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Expressen</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">SVD</a>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link" href="#">NT</a>
-        </li>    
-      </ul>
-    </div>  
-  </nav>
-  <div class="container">
-    <app-all-news></app-all-news>
-    <app-expressen></app-expressen>
-    <app-svd></app-svd>
-    <app-nt></app-nt>
-  </div>
+  <a class="navbar-brand" href="#">NYHETER</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="all-news">Samlade Nyheter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="expressen">Expressen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="svd">SVD</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" routerLink="nt">NT</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
