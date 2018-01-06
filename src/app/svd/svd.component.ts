@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { NewsItem } from '../shared/NewsItem.model';
 
 @Component({
   selector: 'app-svd',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svd.component.css']
 })
 export class SvdComponent implements OnInit {
+  newsList: NewsItem[];
+  svd: any;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+      this.svd = this.dataService.svd
+      this.newsList = this.dataService.newsList;
   }
-
 }

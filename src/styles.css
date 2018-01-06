@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.card-container{
+    margin-bottom: 20px;
+}
+
+
+.newsLink{
+    text-decoration: none;
+}
+.newsLink:hover{
+    text-decoration: none;
+}
+
+.description img{
+    max-width: 100%;
+}
+.source{
+    padding-left: 1em;
+    font-size: .7em;
+}

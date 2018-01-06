@@ -1,3 +1,26 @@
-<p>
-  all-news works!
-</p>
+<div *ngIf="newsList">
+    <div class="jumbotron">
+      <h2 class="display-4">Samlade nyheter!</h2>
+      <p class="lead">Samlade nyheter från Expressen, NT och SVD</p>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 card-container" *ngFor="let newsItem of newsList">
+            <div class="card custom-card">
+              <h5 class="card-header text-white" 
+              [ngClass]="{'bg-success' : newsItem.source == 'expressen', 'bg-info' : newsItem.source == 'svd', 'bg-primary' : newsItem.source == 'nt'}">
+                {{ newsItem.title }}                
+              </h5>
+              <div class="card-body">
+                <p [innerHtml]="newsItem.description" class="description"></p>
+                <p class="text-danger" *ngIf="newsItem.description == '' || newsItem.description == '\<p>\</p>'">Det finns ingen beskrivning!<br>Klicka på länken för att läsa nyheten!</p>
+                
+              </div>
+              <p class="text-muted source">Källa: {{ newsItem.source }}</p>
+                <a class="card-footer text-muted text-center" href="{{ newsItem.link }}" target="blank"> Läs vidare!</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

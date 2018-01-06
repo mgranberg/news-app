@@ -1,3 +1,25 @@
-<p>
-  svd works!
-</p>
+<div *ngIf="svd">
+    <a href="{{ svd.link }}" class="nav-link text-dark" >
+      <div class="jumbotron">
+        <h2 class="display-4">{{ svd.title.cdata }}</h2>
+        <p class="lead">{{ svd.description.cdata }}</p>
+      </div>
+    </a>
+    <div class="container">
+      <div class="row">
+        <ng-container *ngFor="let newsItem of newsList">
+          <div class="col-md-6 col-lg-4 card-container" *ngIf="newsItem.source == 'svd'">
+            <div class="card custom-card">
+              <h5 class="card-header text-white bg-info">{{ newsItem.title }}</h5>
+              <div class="card-body">
+                <p [innerHtml]="newsItem.description" class="description"></p>
+                <p class="text-danger" *ngIf="newsItem.description == '' || newsItem.description == '\<p>\</p>'">Det finns ingen beskrivning!<br>Klicka på länken för att läsa nyheten!</p>
+              </div>
+                <a class="card-footer text-muted text-center" href="{{ newsItem.link }}"> Läs vidare!</a>
+            </div>
+          </div>
+        </ng-container>
+        
+      </div>
+    </div>
+  </div>

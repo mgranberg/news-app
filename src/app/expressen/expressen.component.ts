@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Observable } from "rxjs/Observable";
+import { NewsItem } from '../shared/NewsItem.model';
 
 @Component({
   selector: 'app-expressen',
@@ -9,13 +9,12 @@ import { Observable } from "rxjs/Observable";
 })
 export class ExpressenComponent implements OnInit {
   expressen: any;
+  newsList: NewsItem[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getExpressen().then(res => {
-      this.expressen = this.dataService.expressenNews;
-    });
-    
+    this.newsList = this.dataService.newsList;
+    this.expressen = this.dataService.expressen;
   }
 }
