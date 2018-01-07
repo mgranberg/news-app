@@ -1,3 +1,4 @@
+<!-- En jumbotron med header samt lead -->
 <div *ngIf="newsList">
     <div class="jumbotron">
       <h2 class="display-4">Samlade nyheter!</h2>
@@ -6,19 +7,28 @@
     
     <div class="container">
       <div class="row">
+        <!-- Loopar egenom alla items i newsList och ett kort byggs för varje -->
         <div class="col-md-6 col-lg-4 card-container" *ngFor="let newsItem of newsList">
             <div class="card custom-card">
-              <h5 class="card-header text-white" 
+              <!-- Headerns bakgrundsfärg sätts beroende av dess källa så att det ska gå lätt att skilja på dom. -->
+              <h5 class="card-header text-white"
               [ngClass]="{'bg-success' : newsItem.source == 'expressen', 'bg-info' : newsItem.source == 'svd', 'bg-primary' : newsItem.source == 'nt'}">
+              <!-- Hämtar titel -->
                 {{ newsItem.title }}                
               </h5>
               <div class="card-body">
+                <!-- Här får jag använda innerHtml directive då description innehåller html-taggar och måste tolkas som det. -->
                 <p [innerHtml]="newsItem.description" class="description"></p>
+                <!-- Om beskrivning inte finns eller som i vissa fall jag märkte så är det bara en tom p-tagg så vissas en notis. -->
                 <p class="text-danger" *ngIf="newsItem.description == '' || newsItem.description == '\<p>\</p>'">Det finns ingen beskrivning!<br>Klicka på länken för att läsa nyheten!</p>
-                
+                <!-- En div för gradiant-styling -->
+                <div class="gradient"></div>
               </div>
+              <!-- Två paragrafer för källa och eventuell kategori -->
               <p class="text-muted source">Källa: {{ newsItem.source }}</p>
-                <a class="card-footer text-muted text-center" href="{{ newsItem.link }}" target="blank"> Läs vidare!</a>
+              <p class="text-muted source" *ngIf="newsItem.category">Kategori: {{ newsItem.category }}</p>
+              <!-- Footer som är en länk till nyheten (öppnas i nytt fönster) -->
+              <a class="card-footer text-muted text-center" href="{{ newsItem.link }}" target="blank"> Läs vidare!</a>
             </div>
         </div>
       </div>

@@ -1,20 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Så att inte alla kort ligger på varann */
 .card-container{
     margin-bottom: 20px;
 }
 
-
-.newsLink{
-    text-decoration: none;
-}
-.newsLink:hover{
-    text-decoration: none;
-}
-
+/* Ser till att bilderna i description är responsiva till sin container och inte flyter utanför */
 .description img{
     max-width: 100%;
 }
+
+/* Styling för källa och kategori */
 .source{
-    padding-left: 1em;
+    padding-left: .7em;
+    margin-bottom: .7em;
     font-size: .7em;
+}
+
+/* Höjd för korten */
+.card{
+    height: 400px;
+}
+
+/* Överflödig text döljs, så att man kan ha samma storlek på alla kort. */
+.card-body{
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient för att indikera att det finns mer att läsa och uppmanar att man trycker på läs vidare. */
+.gradient{
+    bottom: 0;
+    height: 4em;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    position: absolute;
+    width: 100%;
 }

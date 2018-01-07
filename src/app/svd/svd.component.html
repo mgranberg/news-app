@@ -1,4 +1,6 @@
+<!-- En jumbotron med header samt lead -->
 <div *ngIf="svd">
+  <!-- Hela jumbotronen är en länk till källan -->
     <a href="{{ svd.link }}" class="nav-link text-dark" >
       <div class="jumbotron">
         <h2 class="display-4">{{ svd.title.cdata }}</h2>
@@ -7,19 +9,26 @@
     </a>
     <div class="container">
       <div class="row">
+        <!-- skapar en ng-container som inte renderas i DOM för att kunna först loopa -->
         <ng-container *ngFor="let newsItem of newsList">
+          <!-- Sen körs ng-if för att bara visa de med rätt källa -->
           <div class="col-md-6 col-lg-4 card-container" *ngIf="newsItem.source == 'svd'">
             <div class="card custom-card">
+              <!-- Hämtar titel -->
               <h5 class="card-header text-white bg-info">{{ newsItem.title }}</h5>
               <div class="card-body">
+                <!-- Här får jag använda innerHtml directive då description innehåller html-taggar och måste tolkas som det. -->
                 <p [innerHtml]="newsItem.description" class="description"></p>
+                <!-- Om beskrivning inte finns eller som i vissa fall jag märkte så är det bara en tom p-tagg så vissas en notis. -->
                 <p class="text-danger" *ngIf="newsItem.description == '' || newsItem.description == '\<p>\</p>'">Det finns ingen beskrivning!<br>Klicka på länken för att läsa nyheten!</p>
+                <!-- En div för gradiant-styling -->
+                <div class="gradient"></div>
               </div>
-                <a class="card-footer text-muted text-center" href="{{ newsItem.link }}"> Läs vidare!</a>
+              <!-- Footer som är en länk till nyheten (öppnas i nytt fönster) -->
+              <a class="card-footer text-muted text-center" href="{{ newsItem.link }}"> Läs vidare!</a>
             </div>
           </div>
         </ng-container>
-        
       </div>
     </div>
   </div>

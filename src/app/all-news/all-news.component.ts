@@ -9,11 +9,13 @@ import { NewsItem } from '../shared/NewsItem.model';
 })
 export class AllNewsComponent implements OnInit {
 
+  //Variabel där jag kan spara newsList
   newsList: NewsItem[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    //Hämtar newsList från DataService
     this.newsList = this.dataService.newsList;
   }
 

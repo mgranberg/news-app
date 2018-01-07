@@ -1,3 +1,5 @@
+<!-- SE SVD.COMPONENT.HTML FÖR KOMMENTARER -->
+
 <div *ngIf="nt">
     <a href="{{ nt.link }}" class="nav-link text-dark" >
       <div class="jumbotron">
@@ -14,6 +16,7 @@
               <div class="card-body">
                 <p [innerHtml]="newsItem.description" class="description"></p>
                 <p class="text-danger" *ngIf="newsItem.description == '' || newsItem.description == '\<p>\</p>'">Det finns ingen beskrivning!<br>Klicka på länken för att läsa nyheten!</p>
+                <div class="gradient"></div>
               </div>
                 <a class="card-footer text-muted text-center" href="{{ newsItem.link }}"> Läs vidare!</a>
             </div>
