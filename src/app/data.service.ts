@@ -90,7 +90,7 @@ export class DataService {
         //Samma sak för svd
         if(this.svdNews){
             this.svdNews.forEach((element: {title, description, pubDate, link, category?} ) => {
-                this.newsList.push(new NewsItem(element.title.cdata, element.description.cdata, new Date(element.pubDate), element.link, "svd", element.category ));
+                this.newsList.push(new NewsItem(element.title.cdata, element.description.cdata, new Date(element.pubDate), element.link, "svd", element.category.cdata ));
             });
         }
 
